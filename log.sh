@@ -10,7 +10,7 @@ threshold=${2:-70}
 num_archive=${3:-5}
 backup_dir='/BACKUP'
 
-if [$log_dir -eq '']; then
+if [ ! -d "$1" ]; then
     echo "[LOG] Error: directory was not requests. Hint: ./log.sh /Name_of_directiry"
     exit 1
 fi
