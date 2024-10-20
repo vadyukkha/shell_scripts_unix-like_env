@@ -10,6 +10,11 @@ threshold=${2:-70}
 num_archive=${3:-5}
 backup_dir='/BACKUP'
 
+if [$log_dir -eq '']; then
+    echo "[LOG] Error: directory was not requests. Hint: ./log.sh /Name_of_directiry"
+    exit 1
+fi
+
 usage=$(df "$log_dir" | awk 'NR==2 {print $5}' | sed 's/%//')
 
 if [ $usage -ge $threshold ]; then
